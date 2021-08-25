@@ -8,11 +8,10 @@ import pandas as pd
 import datetime as dt
 from webdriver_manager.chrome import ChromeDriverManager
 
-
 def scrape_all():
     # Initiate headless driver for deployment
     executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=True)
+    browser = Browser('chrome', **executable_path)
 
     news_title, news_paragraph = mars_news(browser)
 
@@ -28,9 +27,6 @@ def scrape_all():
     # Stop webdriver and return data
     browser.quit()
     return data
-
-
-
 
 def mars_news(browser):
 
@@ -86,11 +82,6 @@ def featured_image(browser):
 
     return img_url
 
-
-
-
-
-
 def mars_facts():
     # Add try/except for error handling
     try:
@@ -106,10 +97,6 @@ def mars_facts():
 
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes="table table-striped")
-
-
-
-
 
 if __name__ == "__main__":
 

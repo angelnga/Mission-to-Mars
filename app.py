@@ -1,3 +1,4 @@
+# 10.5.1 Use Flask to Create a Web App
 from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 import scraping
@@ -21,7 +22,7 @@ def scrape():
    mars = mongo.db.mars
    mars_data = scraping.scrape_all()
    mars.update({}, mars_data, upsert=True)
-   return redirect('/', code=302)
+   return "Scraping Successful!"
 
 
 if __name__ == "__main__":
